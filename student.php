@@ -1,17 +1,6 @@
 <?php
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=university', 'root', '1326');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $student_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-    $stmt = $pdo->prepare('SELECT * FROM students WHERE id = :id');
-    $stmt->execute(['id' => $student_id]);
-    $student = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$student) {
-        throw new Exception('Студент не найден');
-    }
+    list($pdo, $student_id, $stmt, $student) = extracted();
 } catch (PDOException $e) {
     echo 'Ошибка: ' . $e->getMessage();
     exit();

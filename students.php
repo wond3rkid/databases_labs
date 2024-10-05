@@ -24,7 +24,7 @@ try {
 <a>Для просмотра полной информации о студенте нажмите на его id.</a>
 <br>
 <br>
-<table border="1">
+<table>
     <tr>
         <th>Номер</th>
         <th>Имя</th>
@@ -33,10 +33,10 @@ try {
     </tr>
     <?php foreach ($students as $student): ?>
         <tr>
-            <td width="50px"><a href="student.php?id=<?= htmlspecialchars($student['id']); ?>"><?= htmlspecialchars($student['id']); ?></td>
-            <td width="150px"><?= htmlspecialchars($student['first_name']); ?></a></td>
-            <td width="150px"><?= htmlspecialchars($student['last_name']); ?></td>
-            <td width="150px"><?= htmlspecialchars($student['patronymic']); ?></td>
+            <td><a href="student.php?id=<?= htmlspecialchars($student['id']); ?>"><?= htmlspecialchars($student['id']); ?></td>
+            <td><?= htmlspecialchars($student['first_name']); ?></a></td>
+            <td><?= htmlspecialchars($student['last_name']); ?></td>
+            <td><?= htmlspecialchars($student['patronymic']); ?></td>
         </tr>
     <?php endforeach; ?>
 

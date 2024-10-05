@@ -1,5 +1,10 @@
 <?php
-try {
+/**
+ * @return array
+ * @throws Exception
+ */
+function extracted()
+{
     $pdo = new PDO('mysql:host=localhost;dbname=university', 'root', '1326');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -12,6 +17,11 @@ try {
     if (!$student) {
         throw new Exception('Студент не найден');
     }
+    return array($pdo, $student_id, $stmt, $student);
+}
+
+try {
+    list($pdo, $student_id, $stmt, $student) = extracted();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $first_name = $_POST['first_name'];
