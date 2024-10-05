@@ -65,7 +65,6 @@ try {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <link href="styles/table_page.css" rel="stylesheet" type="text/css">
 <html lang="ru">
