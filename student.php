@@ -78,6 +78,6 @@ try {
 <br>
 <a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать</a>
 <br>
-<a href="index.php">Назад к списку студентов</a>
+<a href="students.php">Назад к списку студентов</a>
 </body>
 </html>
