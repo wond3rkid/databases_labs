@@ -1,0 +1,21 @@
+a {
+    color: black;
+    font-family: "Fira Code", serif;
+    font-size: 25px;
+    padding: 4px;
+}
+
+h1 {
+    font-style: italic;
+}
+
+body {
+    background-color: #adb6c8;
+    margin-top: 100px;
+    margin-left: 50px;
+    padding: 50px;
+}
+
+html {
+    background-color: #adb6c8;
+}
