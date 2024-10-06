@@ -2,7 +2,6 @@
 require 'db_config.php';
 
 $pdo = getPDO();
-
 $student_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $stmt = $pdo->prepare('SELECT * FROM students WHERE id = :id');
 $stmt->execute(['id' => $student_id]);
