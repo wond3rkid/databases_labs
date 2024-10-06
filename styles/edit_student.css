@@ -1,0 +1,49 @@
+a {
+    color: black;
+    font-family: "Fira Code", serif;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+td {
+    width: 300px;
+    height: 50px;
+    border: thin solid black;
+    font-family: "Fira Code", serif;
+    font-size: 20px;
+    text-align: center;
+}
+input {
+    font-size: 20px;
+    background-color: #e7ecff;
+    width: 100%;
+}
+
+body {
+    padding: 20px;
+    height: 100%;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #adb6c8;
+}
+
+button {
+    color: #000000;
+    background-color: #dfe6ff;
+    font-size: 18px;
+    height: 40px;
+    text-align: center;
+}
+
+div {
+    margin-top: 15px;
+    margin-left: 15px;
+}
