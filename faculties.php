@@ -1,17 +1,15 @@
 <?php
-try {
-    $pdo = new PDO('mysql:host=localhost;dbname=university', 'root', '1326');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $smtm = $pdo->query("SELECT * FROM `faculties`");
-    $faculties = $smtm->fetchAll(PDO::FETCH_ASSOC);
+require 'db_config.php';
 
-} catch (PDOException $e) {
-    echo $e->getMessage();
-    exit();
-}
+$pdo = getPDO();
+$smtm = $pdo->query("SELECT * FROM faculties");
+$faculties = $smtm->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
+<link href="styles/big_tables_page.css" rel="stylesheet" type="text/css">
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -22,16 +20,18 @@ try {
 <h1>Список факультетов</h1>
 <table>
     <tr>
-        <th>Название</th>
+        <th> Название</th>
     </tr>
     <?php foreach ($faculties as $faculty) : ?>
         <tr>
-            <td><?= htmlspecialchars($faculty['faculty_name'], ENT_QUOTES) ?></td>
+            <td>
+                <a href="faculty.php?id=<?= htmlspecialchars($faculty['id']); ?>"><?= htmlspecialchars($faculty['faculty_name'], ENT_QUOTES) ?>
+            </td>
         </tr>
     <?php endforeach; ?>
 
 </table>
-
+<br>
 
 <a href="index.php">Назад на главную</a>
 </body>

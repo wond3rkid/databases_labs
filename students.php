@@ -1,14 +1,9 @@
 <?php
-try {
-    $pdo = new PDO('mysql:host=localhost;dbname=university', 'root', '1326');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require 'db_config.php';
 
-    $stmt = $pdo->query('SELECT * FROM students');
-    $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo 'Ошибка: ' . $e->getMessage();
-    exit();
-}
+$pdo = getPDO();
+$stmt = $pdo->query('SELECT * FROM students');
+$students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -33,13 +28,14 @@ try {
     </tr>
     <?php foreach ($students as $student): ?>
         <tr>
-            <td><a href="student.php?id=<?= htmlspecialchars($student['id']); ?>"><?= htmlspecialchars($student['id']); ?></td>
+            <td>
+                <a href="student.php?id=<?= htmlspecialchars($student['id']); ?>"><?= htmlspecialchars($student['id']); ?>
+            </td>
             <td><?= htmlspecialchars($student['first_name']); ?></a></td>
             <td><?= htmlspecialchars($student['last_name']); ?></td>
             <td><?= htmlspecialchars($student['patronymic']); ?></td>
         </tr>
     <?php endforeach; ?>
-
 
 </table>
 <a href="index.php"><br> Назад на главную</a>

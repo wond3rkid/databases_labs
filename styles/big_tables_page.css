@@ -1,0 +1,67 @@
+a {
+    color: black;
+    font-family: "Fira Code", serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+th, tr, td {
+    border: 1px solid black;
+    padding: 3px;
+    color: black;
+    font-family: "Fira Code", serif;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    width: 400px;
+}
+
+body {
+    background-color: #adb6c8;
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 20px;
+}
+
+button {
+    color: #000000;
+    background-color: #dfe6ff;
+    font-size: 18px;
+    height: 40px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+label {
+    width: 200px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    flex: 1;
+    font-size: 20px;
+    padding: 5px;
+}
+
+table {
+    border: 1px black;
+    border-collapse: collapse;
+}
+
