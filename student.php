@@ -71,7 +71,7 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
     </tr>
     <tr>
         <th>Факультет</th>
-        <td><?= htmlspecialchars($faculty['faculty_name'] ?? 'Неизвестен'); ?></td>
+        <td><?= htmlspecialchars($faculty['faculty_name']); ?></td>
     </tr>
 </table>
 

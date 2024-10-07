@@ -9,7 +9,7 @@ $faculties = $smtm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<link href="styles/big_tables_page.css" rel="stylesheet" type="text/css">
+<link href="styles/faculties.css" rel="stylesheet" type="text/css">
 <html lang="ru">
 <head>
     <meta charset="UTF-8">

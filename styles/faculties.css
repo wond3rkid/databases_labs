@@ -10,6 +10,7 @@ a:hover {
     text-decoration: underline;
 }
 
+
 h1 {
     font-weight: bold;
 }
@@ -38,13 +39,21 @@ body {
     padding: 20px;
     height: 100%;
     margin: 0;
-    background-color: #adb6c8;
 }
 
 html, body {
     height: 100%;
     margin: 0;
     background-color: #adb6c8;
+}
+
+
+button {
+    color: #000000;
+    background-color: #dfe6ff;
+    font-size: 18px;
+    height: 40px;
+    text-align: center;
 }
 
 form {
@@ -76,11 +85,6 @@ table {
     border: 1px black;
     border-collapse: collapse;
 }
-
-table tr td a:hover {
-    text-decoration: underline;
-}
-
 
 div {
     margin-top: 20px;
