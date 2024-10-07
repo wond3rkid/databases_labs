@@ -9,13 +9,15 @@ h1 {
     font-style: italic;
 }
 
+
 body {
-    background-color: #adb6c8;
-    margin-top: 100px;
-    margin-left: 50px;
-    padding: 50px;
+    padding: 20px;
+    height: 100%;
+    margin: 0;
 }
 
-html {
+html, body {
+    height: 100%;
+    margin: 0;
     background-color: #adb6c8;
 }
