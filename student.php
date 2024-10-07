@@ -8,14 +8,18 @@ $stmt = $pdo->prepare('SELECT * FROM students WHERE id = :id');
 $stmt->execute(['id' => $student_id]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$student) {
-    echo  "Ошибка: студент не был найден в базе данных";
+    echo "Ошибка: студент не был найден в базе данных";
     exit();
 }
+$group_id = $student['group_id'];
+$stmt = $pdo->prepare('SELECT faculty_name FROM faculties JOIN classes ON faculties.id = classes.faculty_id WHERE classes.id = :group_id');
+$stmt->execute(['group_id' => $group_id]);
+$faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
-<link href="styles/table_page.css" rel="stylesheet" type="text/css">
+<link href="styles/students.css" rel="stylesheet" type="text/css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=3.0">
@@ -24,7 +28,7 @@ if (!$student) {
 <body>
 <h1>Информация о студенте</h1>
 
-<table border="1">
+<table>
     <tr>
         <th>ID</th>
         <td><?= htmlspecialchars($student['id']); ?></td>
@@ -64,6 +68,10 @@ if (!$student) {
     <tr>
         <th>Группа</th>
         <td><?= htmlspecialchars($student['group_id']); ?></td>
+    </tr>
+    <tr>
+        <th>Факультет</th>
+        <td><?= htmlspecialchars($faculty['faculty_name'] ?? 'Неизвестен'); ?></td>
     </tr>
 </table>
 

@@ -4,6 +4,7 @@ require 'db_config.php';
 $pdo = getPDO();
 
 $faculty_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$pdo->exec('use university');
 $stmt = $pdo->prepare('SELECT * FROM faculties WHERE id = :id');
 $stmt->execute(['id' => $faculty_id]);
 $faculty = $stmt->fetch(PDO::FETCH_ASSOC);

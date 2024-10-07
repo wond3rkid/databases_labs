@@ -5,6 +5,10 @@ a {
     font-weight: bolder;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 h1 {
     font-weight: bold;
 }

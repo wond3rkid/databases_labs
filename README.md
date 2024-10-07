@@ -68,10 +68,10 @@ SELECT * FROM Students;
 SELECT * FROM Electives;
 ```
 3. Записать студента на факультатив:
-  ```sql
+```sql
 INSERT INTO Enrollments (student_id, elective_id, registration_date) 
 VALUES (1, 1, CURDATE());
-    ```
+```
 4. Получить успеваемость студента:
 ```sql
 SELECT E.elective_id, E.grade 

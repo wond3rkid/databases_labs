@@ -6,11 +6,6 @@ try {
 
     $stmt = $pdo->query("SELECT * FROM students");
     $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach ($students as $student) {
-        echo "ID: " . $student['id'] . " - Name: " . $student['first_name'] . " " . $student['last_name'] . "<br>";
-    }
-
 } catch (PDOException $e) {
     echo "Error retrieving students: " . $e->getMessage();
 }

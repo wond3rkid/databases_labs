@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
 ?>
 <!DOCTYPE html>
 <html lang="ru">
+<link href="styles/main_page.css" rel="stylesheet" type="text/css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База данных</title>
-    <link href="styles/main_page.css" rel="stylesheet" type="text/css">
     <script>
         function showAlert(message) {
             alert(message);
