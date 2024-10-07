@@ -19,20 +19,20 @@ tr, td {
     border: thin solid black;
     padding: 3px;
     font-family: "Fira Code", serif;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: normal;
     text-align: center;
-    width: 200px;
+    width: 600px;
 }
 
 th {
     border: thin solid black;
     padding: 3px;
     font-family: "Fira Code", serif;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: bolder;
     text-align: center;
-    width: 200px;
+    width: 600px;
 }
 
 body {
@@ -46,7 +46,6 @@ html, body {
     margin: 0;
     background-color: #adb6c8;
 }
-
 
 button {
     color: #000000;

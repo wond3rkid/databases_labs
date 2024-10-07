@@ -25,11 +25,10 @@ $faculties = $smtm->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($faculties as $faculty) : ?>
         <tr>
             <td>
-                <a href="faculty.php?id=<?= htmlspecialchars($faculty['id']); ?>"><?= htmlspecialchars($faculty['faculty_name'], ENT_QUOTES) ?>
+                <a href="faculty.php?id=<?= htmlspecialchars($faculty['id']); ?>"><?= htmlspecialchars($faculty['faculty_name']) ?>
             </td>
         </tr>
     <?php endforeach; ?>
-
 </table>
 <br>
 
