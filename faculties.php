@@ -9,12 +9,12 @@ $faculties = $smtm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<link href="styles/faculties.css" rel="stylesheet" type="text/css">
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=3.0">
     <title>Список студентов</title>
+    <link href="styles/faculties.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h1>Список факультетов</h1>
