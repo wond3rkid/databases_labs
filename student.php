@@ -79,5 +79,7 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 <a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать</a>
 <br>
 <a href="students.php">Назад к списку студентов</a>
+<br>
+<a href="group.php?id=<?=htmlspecialchars($student['group_id']);?>">Назад к группе</a>
 </body>
 </html>

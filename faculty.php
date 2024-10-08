@@ -3,21 +3,24 @@ require 'db_config.php';
 
 $pdo = getPDO();
 
-$curr_faculty_id= isset($_GET['id']) ? (int)$_GET['id'] : 0;
-$pdo->exec('use university');
+$curr_faculty_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
 $stmt = $pdo->prepare('SELECT * FROM faculties WHERE id = :id');
 $stmt->execute(['id' => $curr_faculty_id]);
 $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
+
 if (!$faculty) {
     echo 'Ошибка: факультет не найден';
     exit();
 }
+
 $faculty_id = $faculty['id'];
-$stmt = $pdo->prepare('SELECT group_name FROM classes WHERE faculty_id = :id');
-$stmt->execute(['id' => $curr_faculty_id]);
+
+$stmt = $pdo->prepare('SELECT id, group_name FROM classes WHERE faculty_id = :faculty_id');
+$stmt->execute(['faculty_id' => $curr_faculty_id]);
 $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<!DOCTYPE html>
+
 <!DOCTYPE html>
 <link href="styles/faculty.css" rel="stylesheet" type="text/css">
 <html lang="ru">
@@ -44,13 +47,17 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <tr>
         <th>Список групп</th>
     </tr>
+
     <?php foreach ($groups as $group): ?>
-    <tr>
-        <td><?=htmlspecialchars($group['group_name'])?> </td>
-    </tr>
+        <tr>
+            <td>
+                <a href="group.php?id=<?= htmlspecialchars($group['id']); ?>">
+                    <?= htmlspecialchars($group['group_name']); ?>
+                </a>
+            </td>
+        </tr>
     <?php endforeach; ?>
 </table>
-<br>
 <br>
 <a href="faculties.php">Назад к списку факультетов<br></a>
 <a href="index.php">Назад на главную</a>

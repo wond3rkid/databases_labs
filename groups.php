@@ -31,7 +31,11 @@ try {
     </tr>
     <?php foreach ($groups as $group) : ?>
         <tr>
-            <td><?= htmlspecialchars($group['id']); ?></td>
+            <td>
+                <a href="group.php?id=<?= htmlspecialchars($group['id']); ?>">
+                    <?= htmlspecialchars($group['id']); ?>
+                </a>
+            </td>
             <td><?= htmlspecialchars($group['faculty_name']) ?></td>
             <td><?= htmlspecialchars($group['group_name']) ?></td>
         </tr>
