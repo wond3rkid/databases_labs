@@ -31,7 +31,6 @@ $faculties = $smtm->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
 </table>
 <br>
-
 <a href="index.php">Назад на главную</a>
 </body>
 </html>

@@ -26,7 +26,9 @@ try {
     </tr>
     <?php foreach($electives as $elective): ?>
     <tr>
-        <td><?=htmlspecialchars($elective['id'])?></td>
+        <td> <a href="elective.php?id=<?=htmlspecialchars($elective['id'])?>">
+                <?=htmlspecialchars($elective['id'])?>
+            </a>
         <td><?=htmlspecialchars($elective['elective_name'])?></td>
         <td><?=htmlspecialchars($elective['capacity'])?></td>
     </tr>
