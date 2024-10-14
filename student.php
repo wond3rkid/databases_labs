@@ -19,7 +19,7 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="ru">
-<link href="styles/students.css" rel="stylesheet" type="text/css">
+<link href="styles/student.css" rel="stylesheet" type="text/css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=3.0">
@@ -30,7 +30,7 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <table>
     <tr>
-        <th>ID</th>
+        <th>ID студента</th>
         <td><?= htmlspecialchars($student['id']); ?></td>
     </tr>
     <tr>
@@ -62,12 +62,16 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
         <td><?= htmlspecialchars($student['phone_number']); ?></td>
     </tr>
     <tr>
-        <th>GPA</th>
+        <th>Средний балл</th>
         <td><?= htmlspecialchars($student['gpa']); ?></td>
     </tr>
     <tr>
-        <th>Группа</th>
-        <td><?= htmlspecialchars($student['group_id']); ?></td>
+        <th>ID группы</th>
+        <td>
+            <a href="group.php?id=<?= htmlspecialchars($student['group_id']); ?>">
+                <?= htmlspecialchars($student['group_id']); ?>
+            </a>
+        </td>
     </tr>
     <tr>
         <th>Факультет</th>
@@ -76,10 +80,11 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 </table>
 
 <br>
-<a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать</a>
+<a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать информацию о студенте</a>
+<br>
 <br>
 <a href="students.php">Назад к списку студентов</a>
 <br>
-<a href="group.php?id=<?=htmlspecialchars($student['group_id']);?>">Назад к группе</a>
+<a href="group.php?id=<?= htmlspecialchars($student['group_id']); ?>">Назад к группе</a>
 </body>
 </html>

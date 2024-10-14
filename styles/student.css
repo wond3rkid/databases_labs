@@ -1,0 +1,53 @@
+a, p {
+    color: black;
+    font-family: "Fira Code", serif;
+    font-size: 25px;
+    padding: 4px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+tr, td {
+    border: thin solid black;
+    padding: 3px;
+    font-family: "Fira Code", serif;
+    font-size: 23px;
+    font-weight: normal;
+    text-align: center;
+    width: 350px;
+}
+
+th {
+    border: thin solid black;
+    padding: 3px;
+    font-family: "Fira Code", serif;
+    font-size: 23px;
+    font-weight: bolder;
+    text-align: center;
+    width: 250px;
+}
+
+table {
+    border: 1px black;
+    border-collapse: collapse;
+}
+
+body {
+    padding: 20px;
+    height: 100%;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #adb6c8;
+}
+

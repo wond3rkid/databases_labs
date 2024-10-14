@@ -17,6 +17,7 @@
     <li><a href="faculties.php">Посмотреть список факультетов</a></li>
     <li><a href="groups.php">Посмотреть списки групп</a></li>
     <li><a href="electives.php">Посмотреть список факультативов</a></li>
+    <li><a href="input_db.php">Редактировать базу данных</li>
 </ul>
 </body>
 </html>
