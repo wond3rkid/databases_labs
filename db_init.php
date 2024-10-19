@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'db_config.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
     clearAndInitDB();
     $_SESSION['message'] = "База данных 'university' успешно создана и инициализирована.";
@@ -10,11 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
 ?>
 <!DOCTYPE html>
 <html lang="ru">
-<link href="styles/main_page.css" rel="stylesheet" type="text/css">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База данных</title>
+    <link rel="stylesheet" href="./styles/main_page.css">
     <script>
         function showAlert(message) {
             alert(message);
@@ -22,18 +23,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
     </script>
 </head>
 <body>
-<h1>Подготовьте базу данных к работе</h1>
-<form method="post" action="">
-    <button type="submit" name="clear_db">Очистить и инициализировать базу данных</button>
-</form>
-
-<?php
-if (isset($_SESSION['message'])) {
-    echo "<script>showAlert('" . addslashes($_SESSION['message']) . "');</script>";
-    unset($_SESSION['message']);
-}
-?>
-<br>
-<a href="index.php">Назад на главную</a>
+<header>
+    <h1>Подготовьте базу данных к работе</h1>
+</header>
+<main>
+    <article>
+        <form method="post" action="">
+            <button type="submit" name="clear_db">Очистить и инициализировать базу данных</button>
+        </form>
+        <?php
+        if (isset($_SESSION['message'])) {
+            echo "<script>showAlert('" . addslashes($_SESSION['message']) . "');</script>";
+            unset($_SESSION['message']);
+        }
+        ?>
+        <br>
+    </article>
+</main>
+<footer>
+    <a href="index.php">Назад на главную</a>
+</footer>
 </body>
 </html>

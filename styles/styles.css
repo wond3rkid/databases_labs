@@ -1,0 +1,101 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #adb6c8;
+    font-family: "Fira Code", serif;
+    color: black;
+    font-size: 20px;
+    padding: 20px;
+}
+
+a, p {
+    color: black;
+    padding: 4px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.input-student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.input-student-table tr {
+    background-color: #c7d0e1;
+}
+
+
+.input-student-table th, .input-student-table td {
+    border: thin solid black;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.input-student-table th {
+    font-weight: bold;
+    background-color: #cce5ff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 20px;
+}
+
+label {
+    width: 200px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.input-student-button {
+    background-color: #c6cfe0;
+    color: #000;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-student-button button:hover {
+    background-color: #779bd8;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.students-table tr {
+    background-color: #c7d0e1;
+}
+
+.students-table th, .students-table td {
+    border: thin solid black;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.students-table th {
+    font-weight: bold;
+    background-color: #cce5ff;
+}
+

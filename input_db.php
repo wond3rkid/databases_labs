@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=3.0">
     <title>Редактировать базу данных</title>
-    <link href="styles/input.css" rel="stylesheet" type="text/css">
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h1>Редактирование сущностей базы данных</h1>
