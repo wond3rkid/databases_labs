@@ -33,12 +33,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute(['group_id' => $group_id]);
         $group = $stmt->fetch();
         if (!$group) {
-            $faculty_id = $group_id % 3;
+            $stmt = $pdo->query('SELECT COUNT(*) FROM faculties');
+            $faculty_count = $stmt->fetchColumn();
+
+            if ($group_id % $faculty_count == 0 || $faculty_count == 0) {
+                $faculty_id = 1;
+            } else {
+                $faculty_id = $group_id % $faculty_count;
+            }
+
             $stmt = $pdo->query('SELECT COUNT(*) FROM students');
             $student_count = $stmt->fetchColumn();
             $head_id = $student_count + 1;
             $stmt = $pdo->prepare('INSERT INTO `classes` (group_name, faculty_id, head_id) VALUES (:group_name, :faculty_id, :head_id)');
-            $stmt->execute(['group_name' => "Группа $group_id", 'faculty_id' => $faculty_id, 'head_id' => $head_id]);
+            $stmt->execute([
+                'group_name' => "Группа $group_id",
+                'faculty_id' => $faculty_id,
+                'head_id' => $head_id,
+            ]);
         }
 
         $stmt = $pdo->prepare('INSERT INTO students (first_name, last_name, patronymic, birth_day, birth_place, email, phone_number, gpa, group_id) VALUES (:first_name, :last_name, :patronymic, :birth_day, :birth_place, :email, :phone_number, :gpa, :group_id)');

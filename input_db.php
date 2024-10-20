@@ -14,10 +14,12 @@
     <form action="input_student.php" method="get">
         <button type="submit" class="db_button">Добавить студента</button>
     </form>
-    <form action="input_group.php" method="get">
-        <button type="submit" class="db_button">Добавить группу</button>
+    <form action="input_faculty.php" method="get">
+        <button type="submit" class="db_button">Добавить факультет</button>
     </form>
-
+    <form action="input_elective.php" method="get">
+        <button type="submit" class="db_button">Добавить факультатив</button>
+    </form>
 
 </main>
 <footer>
