@@ -4,7 +4,10 @@ html, body {
     background-color: #adb6c8;
     font-family: "Fira Code", serif;
     color: black;
-    font-size: 20px;
+    font-size: 25px;
+}
+
+body {
     padding: 20px;
 }
 
@@ -32,7 +35,6 @@ h1, h2, h3 {
 .input-student-table tr {
     background-color: #c7d0e1;
 }
-
 
 .input-student-table th, .input-student-table td {
     border: thin solid black;
@@ -99,3 +101,25 @@ input {
     background-color: #cce5ff;
 }
 
+.edit-student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.edit-student-table  tr {
+    background-color: #c7d0e1;
+}
+
+
+.edit-student-table  th, .edit-student-table  td {
+    border: thin solid black;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.edit-student-table -table th {
+    font-weight: bold;
+    background-color: #cce5ff;
+}

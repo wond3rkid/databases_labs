@@ -5,11 +5,12 @@ try {
     $pdo = getPDO();
     $stmt = $pdo->query("
         SELECT classes.id, faculties.faculty_name AS faculty_name, classes.group_name 
-        FROM classes JOIN faculties ON classes.faculty_id = faculties.id
+        FROM classes 
+        JOIN faculties ON classes.faculty_id = faculties.id
     ");
     $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo "Error getting data: " . $e->getMessage();
+    exit("Ошибка при получении данных: " . htmlspecialchars($e->getMessage()));
 }
 ?>
 
@@ -17,31 +18,42 @@ try {
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список групп</title>
-    <link href="styles/groups.css" rel="stylesheet" type="text/css">
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Списки групп</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Факультет</th>
-        <th>Группа</th>
-    </tr>
-    <?php foreach ($groups as $group) : ?>
+<header>
+    <h1>Список групп</h1>
+</header>
+
+<main>
+    <table>
+        <thead>
         <tr>
-            <td>
-                <a href="group.php?id=<?= htmlspecialchars($group['id']); ?>">
-                    <?= htmlspecialchars($group['id']); ?>
-                </a>
-            </td>
-            <td><?= htmlspecialchars($group['faculty_name']) ?></td>
-            <td><?= htmlspecialchars($group['group_name']) ?></td>
+            <th>ID</th>
+            <th>Факультет</th>
+            <th>Группа</th>
         </tr>
-    <?php endforeach; ?>
-</table>
-<br>
-<a href="index.php">Назад на главную</a>
+        </thead>
+        <tbody>
+        <?php foreach ($groups as $group): ?>
+            <tr>
+                <td>
+                    <a href="group.php?id=<?= htmlspecialchars($group['id']); ?>">
+                        <?= htmlspecialchars($group['id']); ?>
+                    </a>
+                </td>
+                <td><?= htmlspecialchars($group['faculty_name']); ?></td>
+                <td><?= htmlspecialchars($group['group_name']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <br>
+    <nav>
+        <a href="index.php">Назад на главную</a>
+    </nav>
+</main>
 </body>
 </html>

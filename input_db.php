@@ -7,7 +7,16 @@
     <link href="styles/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Редактирование сущностей базы данных</h1>
-<form action="input_student.php" method="get">
-    <button type="submit">Добавить студента</button>
+<header>
+    <h1>Редактирование сущностей базы данных</h1>
+</header>
+<main>
+    <form action="input_student.php" method="get">
+        <button type="submit">Добавить студента</button>
+    </form>
+</main>
+<footer>
+
+</footer>
 </body>
+</html>
