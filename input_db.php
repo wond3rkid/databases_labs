@@ -12,11 +12,11 @@
 </header>
 <main>
     <form action="input_student.php" method="get">
-        <button type="submit">Добавить студента</button>
+        <button type="submit" class="db_button">Добавить студента</button>
     </form>
 </main>
 <footer>
-
+    <a href="index.php">Назад на главную</a>
 </footer>
 </body>
 </html>

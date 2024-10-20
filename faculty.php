@@ -35,7 +35,8 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </header>
 
 <main>
-    <table>
+    <p></p>
+    <table class="faculties-table">
         <tr>
             <th>ID</th>
             <th>Название</th>
@@ -50,7 +51,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <section>
         <h3>Список групп</h3>
-        <table>
+        <table class="faculties-table">
             <?php foreach ($groups as $group): ?>
                 <tr>
                     <td>

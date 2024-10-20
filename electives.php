@@ -24,7 +24,8 @@ try {
     <h1>Список факультативов университета</h1>
 </header>
 <main>
-    <table>
+    <p>Для просмотра полной информации о факультативе нажмите на его ID.</p>
+    <table class="faculties-table">
         <thead>
         <tr>
             <th>ID</th>
@@ -46,8 +47,9 @@ try {
         <?php endforeach; ?>
         </tbody>
     </table>
-    <br>
-    <a href="index.php">Назад на главную</a>
+    <nav>
+        <a href="index.php">Назад на главную</a>
+    </nav>
 </main>
 <footer>
 </footer>

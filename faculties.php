@@ -21,7 +21,8 @@ $faculties = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </header>
 
 <main>
-    <table>
+    <p>Для просмотра полной информации о факультете нажмите на его ID.</p>
+    <table class="faculties-table">
         <thead>
         <tr>
             <th>Название</th>
@@ -39,7 +40,6 @@ $faculties = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
         </tbody>
     </table>
-    <br>
     <nav>
         <a href="index.php">Назад на главную</a>
     </nav>

@@ -21,15 +21,21 @@ a:hover {
     text-decoration: underline;
 }
 
-h1, h2, h3 {
+h1, h2 {
     font-weight: bold;
     margin: 0;
+}
+
+h3 {
+    font-weight: bold;
+    margin: 0;
+    font-size: 30px;
 }
 
 .input-student-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .input-student-table tr {
@@ -40,7 +46,7 @@ h1, h2, h3 {
     border: thin solid black;
     padding: 10px;
     text-align: left;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .input-student-table th {
@@ -56,13 +62,13 @@ form {
 }
 
 label {
-    width: 200px;
+    width: 100px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 input {
-    font-size: 20px;
+    font-size: 18px;
     padding: 5px;
 }
 
@@ -75,12 +81,12 @@ input {
     transition: background-color 0.3s;
 }
 
-.input-student-button button:hover {
+.input-student-button:hover {
     background-color: #779bd8;
 }
 
 .students-table {
-    width: 100%;
+    width: 70%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
@@ -92,7 +98,7 @@ input {
 .students-table th, .students-table td {
     border: thin solid black;
     padding: 10px;
-    text-align: left;
+    text-align: center;
     font-size: 20px;
 }
 
@@ -107,19 +113,97 @@ input {
     margin-bottom: 20px;
 }
 
-.edit-student-table  tr {
+.edit-student-table tr {
     background-color: #c7d0e1;
 }
 
-
-.edit-student-table  th, .edit-student-table  td {
+.edit-student-table th, .edit-student-table td {
     border: thin solid black;
     padding: 10px;
     text-align: left;
     font-size: 20px;
 }
 
-.edit-student-table -table th {
+.edit-student-table th {
+    font-weight: bold;
+    background-color: #cce5ff;
+}
+
+.db_button {
+    background-color: aliceblue;
+    color: #000000;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.db_button:hover {
+    background-color: lightsteelblue;
+}
+
+.faculties-table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.faculties-table tr {
+    background-color: #c7d0e1;
+}
+
+.faculties-table th, .faculties-table td {
+    border: thin solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.faculties-table th {
+    font-weight: bold;
+    background-color: #cce5ff;
+}
+
+.student-group-table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.student-group-table tr {
+    background-color: #c7d0e1;
+}
+
+.student-group-table th, .student-group-table td {
+    border: thin solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.student-group-table th {
+    font-weight: bold;
+    background-color: #cce5ff;
+}
+
+.student-table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.student-table tr {
+    background-color: #c7d0e1;
+}
+
+.student-table th, .student-table td {
+    border: thin solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.student-table th {
     font-weight: bold;
     background-color: #cce5ff;
 }

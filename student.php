@@ -33,7 +33,8 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 </header>
 
 <main>
-    <table>
+    <p></p>
+    <table class="student-table">
         <tbody>
         <tr>
             <th>ID студента</th>
@@ -86,7 +87,6 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 
-    <br>
     <nav>
         <a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать информацию о студенте</a>
         <br>

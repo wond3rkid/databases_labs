@@ -28,7 +28,8 @@ try {
 </header>
 
 <main>
-    <table>
+    <p>Для просмотра полной информации о группе нажмите на её ID.</p>
+    <table class="faculties-table">
         <thead>
         <tr>
             <th>ID</th>
@@ -50,7 +51,6 @@ try {
         <?php endforeach; ?>
         </tbody>
     </table>
-    <br>
     <nav>
         <a href="index.php">Назад на главную</a>
     </nav>

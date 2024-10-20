@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База данных</title>
-    <link rel="stylesheet" href="./styles/main_page.css">
+    <link rel="stylesheet" href="./styles/styles.css">
     <script>
         function showAlert(message) {
             alert(message);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
 <main>
     <article>
         <form method="post" action="">
-            <button type="submit" name="clear_db">Очистить и инициализировать базу данных</button>
+            <button type="submit" name="clear_db" class="db_button">Очистить и инициализировать базу данных</button>
         </form>
         <?php
         if (isset($_SESSION['message'])) {
@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_db'])) {
             unset($_SESSION['message']);
         }
         ?>
-        <br>
     </article>
 </main>
 <footer>

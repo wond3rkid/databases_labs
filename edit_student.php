@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'ID группы должно быть положительным целым числом.';
     }
 
-    // Если нет ошибок, обновляем данные
     if (empty($errors)) {
         $stmt = $pdo->prepare('UPDATE students SET first_name = :first_name, last_name = :last_name, patronymic = :patronymic, birth_day = :birth_day, birth_place = :birth_place, email = :email, phone_number = :phone_number, gpa = :gpa, group_id = :group_id WHERE id = :id');
         $stmt->execute([
@@ -118,10 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <td><input type="number" name="group_id" id="group_id" value="<?= htmlspecialchars($student['group_id']); ?>" min="1" required></td>
             </tr>
         </table>
-        <br>
-        <button type="submit">Сохранить изменения</button>
+        <button type="submit" class="input-student-button">Сохранить изменения</button>
     </form>
-    <br>
     <a href="student.php?id=<?= htmlspecialchars($student['id']); ?>">Назад к информации о студенте</a>
 </main>
 </body>
