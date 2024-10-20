@@ -39,7 +39,6 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 <main>
     <p>Название группы: <?= htmlspecialchars($group['group_name']); ?></p>
     <p>Факультет: <a href="faculty.php?id=<?= htmlspecialchars($faculty_id); ?>"><?= htmlspecialchars($faculty['faculty_name']); ?></a></p>
-
     <h3>Список студентов:</h3>
     <br>
     <table class="student-group-table">

@@ -14,6 +14,11 @@
     <form action="input_student.php" method="get">
         <button type="submit" class="db_button">Добавить студента</button>
     </form>
+    <form action="input_group.php" method="get">
+        <button type="submit" class="db_button">Добавить группу</button>
+    </form>
+
+
 </main>
 <footer>
     <a href="index.php">Назад на главную</a>

@@ -36,7 +36,7 @@ function clearAndInitDB()
             email VARCHAR(255),
             phone_number VARCHAR(20),
             gpa FLOAT,
-            group_id INT CHECK(group_id > 0)
+            group_id INT
         )");
         $pdo->exec("INSERT INTO students (first_name, last_name, patronymic, birth_day, birth_place, email, phone_number, gpa, group_id) VALUES  
                                                                                                                          ('Иван', 'Солженицын', 'Иванович', '2001-05-15', 'Москва', 'ivan.ivanov@example.com', '+79261234567', 3.5, 1),  

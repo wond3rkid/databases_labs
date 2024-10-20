@@ -29,6 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
+        $stmt = $pdo->prepare('SELECT * FROM `classes` WHERE id = :group_id');
+        $stmt->execute(['group_id' => $group_id]);
+        $group = $stmt->fetch();
+        if (!$group) {
+            $faculty_id = $group_id % 3;
+            $stmt = $pdo->query('SELECT COUNT(*) FROM students');
+            $student_count = $stmt->fetchColumn();
+            $head_id = $student_count + 1;
+            $stmt = $pdo->prepare('INSERT INTO `classes` (group_name, faculty_id, head_id) VALUES (:group_name, :faculty_id, :head_id)');
+            $stmt->execute(['group_name' => "Группа $group_id", 'faculty_id' => $faculty_id, 'head_id' => $head_id]);
+        }
+
         $stmt = $pdo->prepare('INSERT INTO students (first_name, last_name, patronymic, birth_day, birth_place, email, phone_number, gpa, group_id) VALUES (:first_name, :last_name, :patronymic, :birth_day, :birth_place, :email, :phone_number, :gpa, :group_id)');
         $stmt->execute([
             'first_name' => $first_name,
@@ -41,11 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'gpa' => $gpa,
             'group_id' => $group_id,
         ]);
+
+        $student_id = $pdo->lastInsertId();
+
+        $stmt = $pdo->prepare('UPDATE `classes` SET head_id = :head_id WHERE id = :group_id');
+        $stmt->execute(['head_id' => $head_id, 'group_id' => $group_id]);
+
         header('Location: students.php');
         exit();
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
