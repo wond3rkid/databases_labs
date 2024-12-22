@@ -3,22 +3,32 @@ require 'db_config.php';
 
 $pdo = getPDO();
 
-// Получение идентификатора факультета с безопасным приведением типа
 $curr_faculty_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $stmt = $pdo->prepare('SELECT * FROM faculties WHERE id = :id');
 $stmt->execute(['id' => $curr_faculty_id]);
 $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Проверка наличия факультета
 if (!$faculty) {
     exit('Ошибка: факультет не найден');
 }
 
-// Получение списка групп, связанных с факультетом
 $stmt = $pdo->prepare('SELECT id, group_name FROM classes WHERE faculty_id = :faculty_id');
 $stmt->execute(['faculty_id' => $curr_faculty_id]);
 $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$error_message = '';
+if (isset($_POST['delete_faculty'])) {
+    if (count($groups) > 0) {
+        $error_message = 'Нельзя удалить факультет, в котором есть группы.';
+    } else {
+        $stmt = $pdo->prepare("DELETE FROM faculties WHERE id = :id");
+        $stmt->execute(['id' => $curr_faculty_id]);
+
+        header('Location: faculties.php');
+        exit();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +45,10 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </header>
 
 <main>
+    <?php if ($error_message): ?>
+        <p style="color: red;"><?= htmlspecialchars($error_message) ?></p>
+    <?php endif; ?>
+
     <p></p>
     <table class="faculties-table">
         <tr>
@@ -65,9 +79,15 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </section>
 
     <br>
+
+    <!-- Форма для удаления факультета -->
+    <form method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить факультет?')">
+        <button type="submit" name="delete_faculty" class="db_button">Удалить факультет</button>
+    </form>
+
+    <br>
     <nav>
-        <a href="faculties.php">Назад к списку факультетов</a>
-        <br>
+        <a href="faculties.php">Назад к списку факультетов</a><br>
         <a href="index.php">Назад на главную</a>
     </nav>
 </main>

@@ -19,6 +19,7 @@
         <li><a href="faculties.php">Просмотр списка факультетов</a></li>
         <li><a href="groups.php">Просмотр списков групп</a></li>
         <li><a href="electives.php">Просмотр списка факультативов</a></li>
+        <li><a href="faculty_enrollments.php">Просмотр записей на факультативы</a></li>
         <li><a href="input_db.php">Редактирование базы данных</a></li>
     </ul>
 </main>

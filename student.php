@@ -14,6 +14,7 @@ if (!$student) {
 }
 
 $group_id = $student['group_id'];
+
 $stmt = $pdo->prepare('SELECT faculty_name FROM faculties JOIN classes ON faculties.id = classes.faculty_id WHERE classes.id = :group_id');
 $stmt->execute(['group_id' => $group_id]);
 $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -26,6 +27,29 @@ $stmt = $pdo->prepare('
 ');
 $stmt->execute(['student_id' => $student_id]);
 $electives = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare('SELECT head_id FROM classes WHERE id = :group_id');
+$stmt->execute(['group_id' => $group_id]);
+$group = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$is_head = $group['head_id'] == $student_id;
+
+$error_message = '';
+
+if (isset($_POST['delete_student'])) {
+    if ($is_head) {
+        $error_message = 'Нельзя удалить старосту группы.';
+    } else {
+        $stmt = $pdo->prepare('DELETE FROM students WHERE id = :id');
+        $stmt->execute(['id' => $student_id]);
+
+        $stmt = $pdo->prepare('DELETE FROM student_elective WHERE student_id = :student_id');
+        $stmt->execute(['student_id' => $student_id]);
+
+        header('Location: students.php');
+        exit();
+    }
+}
 
 if (isset($_GET['delete_elective_id'])) {
     $delete_elective_id = (int)$_GET['delete_elective_id'];
@@ -52,6 +76,10 @@ if (isset($_GET['delete_elective_id'])) {
 </header>
 
 <main>
+    <?php if ($error_message): ?>
+        <p style="color: red;"><?= htmlspecialchars($error_message) ?></p>
+    <?php endif; ?>
+
     <table class="student-table">
         <tbody>
         <tr>
@@ -121,17 +149,27 @@ if (isset($_GET['delete_elective_id'])) {
     <?php endif; ?>
 
     <nav>
-        <a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать информацию о студенте</a>
-        <br>
-        <a href="add_elective.php?student_id=<?= $student_id; ?>">Записаться на новый электив</a>
-        <br>
-        <br>
+        <form action="edit_student.php" method="GET">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($student['id']); ?>">
+            <button type="submit" class="nav_button">Редактировать информацию о студенте</button>
+        </form>
+        <form action="add_elective.php" method="GET">
+            <input type="hidden" name="student_id" value="<?= $student_id; ?>">
+            <button type="submit" class="nav_button">Записаться на новый электив</button>
+        </form>
+        <form method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить студента?')">
+            <button type="submit" name="delete_student" class="db_button">Удалить студента</button>
+        </form>
+
         <br>
         <a href="students.php">Назад к списку студентов</a>
         <br>
         <a href="group.php?id=<?= htmlspecialchars($student['group_id']); ?>">Назад к группе</a>
-
     </nav>
+
+
+
+
 </main>
 </body>
 </html>
