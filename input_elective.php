@@ -71,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 <footer>
     <a href="input_db.php">Назад к редактированию базы</a> <br>
-    <a href="electives.php">Назад к списку факультативов</a>
 </footer>
 </body>
 </html>

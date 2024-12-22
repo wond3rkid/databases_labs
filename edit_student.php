@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gpa = $_POST['gpa'];
     $group_id = $_POST['group_id'];
 
-    // Валидация ввода
     if (empty($first_name) || empty($last_name)) {
         $errors[] = 'Имя и фамилия обязательны для заполнения.';
     }

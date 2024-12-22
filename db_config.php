@@ -93,6 +93,19 @@ function clearAndInitDB()
                                                                  ('Вычислительные методы линейной алгебры', 'На курсе исследуются численные методы решения задач линейной алгебры. Учащиеся познакомятся с методами, такими как метод Гаусса, матричные разложения и итерационные алгоритмы. Курс акцентирует внимание на применении этих методов в различных областях, таких как компьютерная графика, машиное обучение и численное моделирование.', 7), 
                                                                  ('Литература 19 века', 'Данный курс погружает студентов в богатый мир литературы 19 века, исследуя ключевых авторов и произведения, формировавшие культурный контекст эпохи. Участники изучат произведения таких писателей, как Лев Толстой, Фёдор Достоевский, Эмили Бронте и других, анализируя их стиль, тематику и влияние на последующую литературу и общество.', 10);
         ");
+
+        $pdo->exec("CREATE TABLE student_elective (
+            student_id INT NOT NULL,
+            elective_id INT NOT NULL,
+            enrollment_date DATE NOT NULL,
+            PRIMARY KEY (student_id, elective_id),
+            FOREIGN KEY (student_id) REFERENCES students(id),
+            FOREIGN KEY (elective_id) REFERENCES electives(id)
+        )");
+
+        $pdo->exec("INSERT INTO student_elective (student_id, elective_id, enrollment_date) VALUES 
+            (1, 1, '2024-01-10'), 
+            (2, 2, '2024-01-15');");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

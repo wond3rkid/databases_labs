@@ -17,6 +17,25 @@ $group_id = $student['group_id'];
 $stmt = $pdo->prepare('SELECT faculty_name FROM faculties JOIN classes ON faculties.id = classes.faculty_id WHERE classes.id = :group_id');
 $stmt->execute(['group_id' => $group_id]);
 $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare('
+    SELECT electives.elective_name, electives.id AS elective_id, student_elective.enrollment_date
+    FROM electives
+    JOIN student_elective ON electives.id = student_elective.elective_id
+    WHERE student_elective.student_id = :student_id
+');
+$stmt->execute(['student_id' => $student_id]);
+$electives = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_GET['delete_elective_id'])) {
+    $delete_elective_id = (int)$_GET['delete_elective_id'];
+
+    $deleteStmt = $pdo->prepare('DELETE FROM student_elective WHERE student_id = :student_id AND elective_id = :elective_id');
+    $deleteStmt->execute(['student_id' => $student_id, 'elective_id' => $delete_elective_id]);
+
+    header("Location: student.php?id=" . $student_id);
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +52,6 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
 </header>
 
 <main>
-    <p></p>
     <table class="student-table">
         <tbody>
         <tr>
@@ -87,12 +105,32 @@ $faculty = $stmt->fetch(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 
+    <h2>Элективы</h2>
+    <?php if ($electives): ?>
+        <ul>
+            <?php foreach ($electives as $elective): ?>
+                <li>
+                    <?= htmlspecialchars($elective['elective_name']); ?>
+                    (Дата записи: <?= htmlspecialchars($elective['enrollment_date']); ?>)
+                    <a href="student.php?id=<?= $student_id; ?>&delete_elective_id=<?= $elective['elective_id']; ?>">Удалить</a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Студент не записан на элективы.</p>
+    <?php endif; ?>
+
     <nav>
         <a href="edit_student.php?id=<?= htmlspecialchars($student['id']); ?>">Редактировать информацию о студенте</a>
+        <br>
+        <a href="add_elective.php?student_id=<?= $student_id; ?>">Записаться на новый электив</a>
+        <br>
+        <br>
         <br>
         <a href="students.php">Назад к списку студентов</a>
         <br>
         <a href="group.php?id=<?= htmlspecialchars($student['group_id']); ?>">Назад к группе</a>
+
     </nav>
 </main>
 </body>

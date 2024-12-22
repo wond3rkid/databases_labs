@@ -20,6 +20,9 @@
     <form action="input_elective.php" method="get">
         <button type="submit" class="db_button">Добавить факультатив</button>
     </form>
+    <form action="input_group.php" method="get">
+        <button type="submit" class="db_button">Добавить группу</button>
+    </form>
 
 </main>
 <footer>
